@@ -1,9 +1,12 @@
-const { simulateCrateMove } = require("./day");
+const { simulateCrateMove9000, simulateCrateMove9001 } = require("./day");
 
 describe("day 5 faffing with crates", () => {
-  it("get top crate", () => {
-    const result = simulateCrateMove('../5/input0.txt')
-    console.log(simulateCrateMove('../5/input1.txt'))
+  it("moves top crate", () => {
+    const result = simulateCrateMove9000('../5/input0.txt')
     expect(result).toBe('CMZ');
+  });
+  it("moves n crates", () => {
+    const result = simulateCrateMove9001('../5/input0.txt')
+    expect(result).toBe('MCD');
   });
 });

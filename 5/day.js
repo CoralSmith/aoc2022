@@ -5,7 +5,7 @@ function getFileContents(input){
   return readFileSync(path.resolve(__dirname, input)).toString().split('\n\n');
 }
 
-function simulateCrateMove(input) {
+function getParsedFile(input){
   const [crateModel, stepBlock] = getFileContents(input);
   const crateLayers = crateModel.split('\n')
   const numStacks = crateLayers.pop().split('   ').length
@@ -20,8 +20,12 @@ function simulateCrateMove(input) {
     })
     stacks[`${i}`].reverse()
   }
+  return [stacks, stepBlock.split('\n')]
+}
+
+function simulateCrateMove9000(input) {
+  const [stacks, steps] = getParsedFile(input);
   
-  const steps = stepBlock.split('\n')
   steps.forEach(step => {
     const [_i, quantity, _f, startPos, _t, endPos] = step.split(' ')
     for (i=0; i<quantity; i++) {
@@ -29,13 +33,20 @@ function simulateCrateMove(input) {
       stacks[endPos].push(crate)
     }
   })
-  const result = []
-  for (const [k, val] of Object.entries(stacks)) {
-    const c = val.pop()[1]
-    result.push(c)
-  }
 
-  return result.join('')
+  return Object.values(stacks).map(i => i.pop()[1]).join('')
 }
 
-module.exports = {simulateCrateMove}
+function simulateCrateMove9001(input) {
+  const [stacks, steps] = getParsedFile(input);
+
+  steps.forEach(step => {
+    const [_i, quantity, _f, startPos, _t, endPos] = step.split(' ')
+    const liftedCrates = stacks[startPos].splice(stacks[startPos].length-quantity, quantity)
+    stacks[endPos].push(...liftedCrates)
+  })
+
+  return Object.values(stacks).map(i => i.pop()[1]).join('')
+}
+
+module.exports = {simulateCrateMove9000, simulateCrateMove9001}

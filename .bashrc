@@ -1,1 +1,0 @@
-alias aoc="/home/csmith/repos/AoC2022/index.js"

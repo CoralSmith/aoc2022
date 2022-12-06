@@ -5,7 +5,7 @@ const { inferScore, getScore } = require("./2/day");
 const { getPrioritySum, findBadge } = require("./3/day");
 const { allOverlap, someOverlap } = require("./4/day");
 const { simulateCrateMove9000, simulateCrateMove9001 } = require("./5/day");
-const { packetFinder } = require("./6/day");
+const { packetFinder, messageFinder } = require("./6/day");
 
 function main(){
     const day = parseInt(process.argv[2]??'0')
@@ -44,7 +44,7 @@ function main(){
     if([0,6].includes(day)) {
         console.log(`Day 6:
     Star 0: ${packetFinder(testFile)}
-    Star 1: ${(testFile)}`)
+    Star 1: ${messageFinder(testFile)}`)
     }
 
     return 0;

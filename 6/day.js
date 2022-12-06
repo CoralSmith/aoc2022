@@ -5,14 +5,18 @@ function packetFinder(input) {
   const data = readFileSync(path.resolve(__dirname, input)).toString();
   return getStartPacket(data);
 }
-function getStartPacket(data) {
+function messageFinder(input) {
+  const data = readFileSync(path.resolve(__dirname, input)).toString();
+  return getStartPacket(data, 14);
+}
+function getStartPacket(data, window=4) {
   const packetStarts = [];
-  for (i = 0; i <= data.length - 4; i += 1) {
-    const maybeStart = Array.from(data.slice(i, i + 4));
-    const isStartPacket = Array.from(new Set(maybeStart)).length === 4;
-    if (isStartPacket) packetStarts.push(i + 4);
+  for (i = 0; i <= data.length - window; i += 1) {
+    const maybeStart = Array.from(data.slice(i, i + window));
+    const isStartPacket = Array.from(new Set(maybeStart)).length === window;
+    if (isStartPacket) packetStarts.push(i + window);
   }
   return packetStarts.shift();
 }
 
-module.exports = { packetFinder, getStartPacket };
+module.exports = { packetFinder, messageFinder, getStartPacket };

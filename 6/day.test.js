@@ -1,25 +1,24 @@
-const { packetFinder, getStartPacket } = require("./day");
+const { packetFinder, getUniqueWindowIndex } = require("./day");
+const { readFileSync } = require("fs");
+const path = require("path");
 
 describe("day 6", () => {
   it("start of packet finder", () => {
-    const result = packetFinder('../6/input0.txt')
+    const data = readFileSync(path.resolve(__dirname, '../6/input0.txt')).toString();
+    const result = getUniqueWindowIndex(data, 4)
     expect(result).toBe(7);
   });
-  it("packet starter", () => {
-    expect(getStartPacket('bvwbjplbgvbhsrlpgdmjqwftvncz')).toBe(5);
-    expect(getStartPacket('nppdvjthqldpwncqszvftbrmjlhg')).toBe(6);
-    expect(getStartPacket('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg')).toBe(10);
-    expect(getStartPacket('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw')).toBe(11);
+
+  it("unique block starter", () => {
+    expect(getUniqueWindowIndex('mjqjpqmgbljsphdztnvjfqwrcgsmlb')).toBe(7);
+    expect(getUniqueWindowIndex('bvwbjplbgvbhsrlpgdmjqwftvncz')).toBe(5);
+    expect(getUniqueWindowIndex('nppdvjthqldpwncqszvftbrmjlhg')).toBe(6);
+    expect(getUniqueWindowIndex('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg')).toBe(10);
+    expect(getUniqueWindowIndex('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw')).toBe(11);
+    expect(getUniqueWindowIndex('mjqjpqmgbljsphdztnvjfqwrcgsmlb', 14)).toBe(19);
+    expect(getUniqueWindowIndex('bvwbjplbgvbhsrlpgdmjqwftvncz', 14)).toBe(23);
+    expect(getUniqueWindowIndex('nppdvjthqldpwncqszvftbrmjlhg', 14)).toBe(23);
+    expect(getUniqueWindowIndex('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg', 14)).toBe(29);
+    expect(getUniqueWindowIndex('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw', 14)).toBe(26);
   });
-  it("starter", () => {
-    expect(getStartPacket('mjqjpqmgbljsphdztnvjfqwrcgsmlb', 14)).toBe(19);
-    expect(getStartPacket('bvwbjplbgvbhsrlpgdmjqwftvncz', 14)).toBe(23);
-    expect(getStartPacket('nppdvjthqldpwncqszvftbrmjlhg', 14)).toBe(23);
-    expect(getStartPacket('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg', 14)).toBe(29);
-    expect(getStartPacket('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw', 14)).toBe(26);
-  });
-  // it("s2", () => {
-  //   const result = ('../6/input0.txt')
-  //   expect(result).toBe('ooo');
-  // });
 });

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const { readFileSync } = require("fs");
+const path = require("path");
 const { getMaxCalories, getTopThreeCalories } = require("./1/day");
 const { inferScore, getScore } = require("./2/day");
 const { getPrioritySum, findBadge } = require("./3/day");
@@ -42,9 +44,10 @@ function main(){
     }
 
     if([0,6].includes(day)) {
+        const data = readFileSync(path.resolve(__dirname, input)).toString();
         console.log(`Day 6:
-    Star 0: ${packetFinder(testFile)}
-    Star 1: ${messageFinder(testFile)}`)
+    Star 0: ${getUniqueWindowIndex(data)}
+    Star 1: ${getUniqueWindowIndex(data, 14)}`)
     }
 
     return 0;

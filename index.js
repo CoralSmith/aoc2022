@@ -5,6 +5,7 @@ const { inferScore, getScore } = require("./2/day");
 const { getPrioritySum, findBadge } = require("./3/day");
 const { allOverlap, someOverlap } = require("./4/day");
 const { simulateCrateMove9000, simulateCrateMove9001 } = require("./5/day");
+const { packetFinder } = require("./6/day");
 
 function main(){
     const day = parseInt(process.argv[2]??'0')
@@ -38,6 +39,12 @@ function main(){
         console.log(`Day 5:
     Simulated crate move with 9000 model: ${simulateCrateMove9000(testFile)}
     Simulated crate move with 9001 model: ${simulateCrateMove9001(testFile)}`)
+    }
+
+    if([0,6].includes(day)) {
+        console.log(`Day 6:
+    Star 0: ${packetFinder(testFile)}
+    Star 1: ${(testFile)}`)
     }
 
     return 0;

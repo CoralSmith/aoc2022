@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-const { readFileSync } = require("fs");
-const path = require("path");
 const { getMaxCalories, getTopThreeCalories } = require("./1/day");
 const { inferScore, getScore } = require("./2/day");
 const { getPrioritySum, findBadge } = require("./3/day");
 const { allOverlap, someOverlap } = require("./4/day");
 const { simulateCrateMove9000, simulateCrateMove9001 } = require("./5/day");
-const { packetFinder, messageFinder } = require("./6/day");
+const {  getUniqueWindowIndex } = require("./6/day");
+const { sumOfSmallDirs, getDirSizeToFreeSpace } = require("./7/day");
 
 function main(){
     const day = parseInt(process.argv[2]??'0')
@@ -44,10 +43,15 @@ function main(){
     }
 
     if([0,6].includes(day)) {
-        const data = readFileSync(path.resolve(__dirname, input)).toString();
         console.log(`Day 6:
-    Star 0: ${getUniqueWindowIndex(data)}
-    Star 1: ${getUniqueWindowIndex(data, 14)}`)
+    Star 0: ${getUniqueWindowIndex(testFile)}
+    Star 1: ${getUniqueWindowIndex(testFile, 14)}`)
+    }
+
+    if([0,7].includes(day)) {
+        console.log(`Day 7:
+    Star 0: ${sumOfSmallDirs(testFile)}
+    Star 1: ${getDirSizeToFreeSpace(testFile)}`)
     }
 
     return 0;

@@ -7,6 +7,7 @@ const { allOverlap, someOverlap } = require("./4/day");
 const { simulateCrateMove9000, simulateCrateMove9001 } = require("./5/day");
 const {  getUniqueWindowIndex } = require("./6/day");
 const { sumOfSmallDirs, getDirSizeToFreeSpace } = require("./7/day");
+const { countTrees, getHighestScenicScore } = require("./8/day");
 
 function main(){
     const day = parseInt(process.argv[2]??'0')
@@ -52,6 +53,12 @@ function main(){
         console.log(`Day 7:
     Star 0: ${sumOfSmallDirs(testFile)}
     Star 1: ${getDirSizeToFreeSpace(testFile)}`)
+    }
+
+    if([0,8].includes(day)) {
+        console.log(`Day 8:
+    Star 0: ${countTrees(testFile)}
+    Star 1: ${getHighestScenicScore(testFile)}`)
     }
 
     return 0;

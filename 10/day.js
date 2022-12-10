@@ -60,7 +60,7 @@ class Display {
       .map((r) => r.join(""))
       .join("\n")
       .trim();
-    console.log(display);
+    //console.log(display);
     return display;
   }
 }

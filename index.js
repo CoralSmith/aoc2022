@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { getMaxCalories, getTopThreeCalories } = require("./1/day");
+const { getTotalSignal } = require("./10/day");
 const { inferScore, getScore } = require("./2/day");
 const { getPrioritySum, findBadge } = require("./3/day");
 const { allOverlap, someOverlap } = require("./4/day");
@@ -65,6 +66,12 @@ function main(){
     if([0,9].includes(day)) {
         console.log(`Day 9:
     Star 0: ${countTailMovement(testFile)}
+    Star 1: ${countTailMovement(testFile, 10)}`)
+    }
+
+    if([0,10].includes(day)) {
+        console.log(`Day 10:
+    Star 0: ${getTotalSignal(testFile)}
     Star 1: ${countTailMovement(testFile, 10)}`)
     }
 

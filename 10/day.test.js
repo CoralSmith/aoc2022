@@ -1,8 +1,16 @@
-const { getTotalSignal } = require("./day");
+const { getTotalSignal, printProgramDisplay } = require("./day");
 
 describe("day 10 - i am computer now", () => {
   it('gets the total signal strength emitted', () => {
     expect(getTotalSignal('../10/input0.txt')).toBe(13140)
+  })
+  it('prints program output', () => {
+    expect(printProgramDisplay('../10/input0.txt')).toBe(`##..##..##..##..##..##..##..##..##..##..
+###...###...###...###...###...###...###.
+####....####....####....####....####....
+#####.....#####.....#####.....#####.....
+######......######......######......####
+#######.......#######.......#######.....`)
   })
 //   it("perform operation", () => {
 //     expect(performOperation('noop', new CPU()).x).toBe(1);

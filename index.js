@@ -8,6 +8,7 @@ const { simulateCrateMove9000, simulateCrateMove9001 } = require("./5/day");
 const {  getUniqueWindowIndex } = require("./6/day");
 const { sumOfSmallDirs, getDirSizeToFreeSpace } = require("./7/day");
 const { countTrees, getHighestScenicScore } = require("./8/day");
+const { countTailMovement } = require("./9/day");
 
 function main(){
     const day = parseInt(process.argv[2]??'0')
@@ -59,6 +60,12 @@ function main(){
         console.log(`Day 8:
     Star 0: ${countTrees(testFile)}
     Star 1: ${getHighestScenicScore(testFile)}`)
+    }
+
+    if([0,9].includes(day)) {
+        console.log(`Day 9:
+    Star 0: ${countTailMovement(testFile)}
+    Star 1: ${countTailMovement(testFile, 10)}`)
     }
 
     return 0;

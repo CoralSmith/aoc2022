@@ -2,6 +2,7 @@
 
 const { getMaxCalories, getTopThreeCalories } = require("./1/day");
 const { getTotalSignal, printProgramDisplay } = require("./10/day");
+const { getMonkeyBusiness } = require("./11/day");
 const { inferScore, getScore } = require("./2/day");
 const { getPrioritySum, findBadge } = require("./3/day");
 const { allOverlap, someOverlap } = require("./4/day");
@@ -73,6 +74,12 @@ function main(){
         console.log(`Day 10:
     Star 0: ${getTotalSignal(testFile)}
     Star 1: \n${printProgramDisplay(testFile)}`)
+    }
+
+    if([0,11].includes(day)) {
+        console.log(`Day 11:
+    Star 0: ${getMonkeyBusiness(testFile)}
+    Star 1: ${getMonkeyBusiness(testFile, 10000, false)}`)
     }
 
     return 0;
